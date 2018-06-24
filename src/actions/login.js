@@ -1,3 +1,8 @@
+
+import { Login } from '../components/login';
+
+
+
 export function loginHasErrored(bool) {
     return {
         type: 'LOGIN_HAS_ERRORED',
@@ -20,22 +25,22 @@ export function loginFetchDataSuccess(items) {
 }
 
 
-export function itemsFetchData(url) {
+var url = 'http://localhost:8000/api/login';
+var data = {username: 'admin', password:'admin' };
+
+export function loginFetchData(url) {
     return (dispatch) => {
-        dispatch(itemsIsLoading(true));
+        dispatch(loginIsInProgress(true));
 
-        fetch(url)
-            .then((response) => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-
-                dispatch(itemsIsLoading(false));
-
-                return response;
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
             })
             .then((response) => response.json())
-            .then((items) => dispatch(itemsFetchDataSuccess(items)))
-            .catch(() => dispatch(itemsHasErrored(true)));
+            .then((items) => dispatch(loginFetchDataSuccess(items)))
+            .catch(() => loginHasErrored((true)));
     };
 }
