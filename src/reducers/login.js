@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 export function loginHasErrored(state = false, action) {
     switch (action.type) {
         case 'LOGIN_HAS_ERRORED':
@@ -18,12 +25,22 @@ export function loginIsInProgress(state = false, action) {
     }
 }
 
+
+
+
+
 export function login(state = [], action) {
     switch (action.type) {
         case 'LOGIN_FETCH_DATA_SUCCESS':
-            return action.items;
+        console.log("llore10"+action.items.id);
+      
+            return action.items;  
+
 
         default:
             return state;
     }
+
+
+    
 }

@@ -39,8 +39,10 @@ export function loginFetchData(url) {
               'Content-Type': 'application/json'
             }
             })
-            .then((response) => response.json())
-            .then((items) => dispatch(loginFetchDataSuccess(items)))
-            .catch(() => loginHasErrored((true)));
+           // console.log("llore")
+           .then(response => response.json())
+           .catch(error => console.error('Error:', error))
+           .then(response => console.log('Success:',dispatch(loginFetchDataSuccess(response))) );
+           
     };
 }
