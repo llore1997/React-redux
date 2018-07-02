@@ -1,5 +1,4 @@
-
-
+import React, { Component, PropTypes } from 'react';
 
 
 
@@ -22,6 +21,7 @@ export function loginIsInProgress(state = false, action) {
 
         default:
             return state;
+           
     }
 }
 
@@ -32,13 +32,12 @@ export function loginIsInProgress(state = false, action) {
 export function login(state = [], action) {
     switch (action.type) {
         case 'LOGIN_FETCH_DATA_SUCCESS':
-        console.log("llore10"+action.items.id);
-      
+     console.log("llore");
             return action.items;  
-
 
         default:
             return state;
+           
     }
 
 
